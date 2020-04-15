@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Описание страницы для SEO и соцсетей">
+    <meta name="keywords" content="ключевые, слова, через, запятую">
+    <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700|Rubik:400,500,700&display=swap" rel="stylesheet">
+    <title>Проект</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="vendors/css/slick.css" type="text/css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a5bc5feb-0468-4d6f-8e7d-2bf6551c429a&lang=ru_RU" type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <main class="main">
+        <section class="header short-header">
+            <div class="wrapper header-wrapper">
+                <menu class="header__menu">
+                    <div class="header__logo">
+                        <a href="/" class="header__logo-link">
+                            <img src="img/icons/logo.png" alt="ВодПром" class="header__logo-img">
+                            <svg class="header__logo-title" width="100" height="23" viewBox="0 0 100 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.8753 12.1009C12.8753 15.0481 10.5953 17.1285 7.40999 17.1285H1.74353C0.737646 17.1285 0 16.3656 0 15.3255V1.803C0 0.762806 0.737646 0 1.74353 0H5.90117C8.98588 0 11.1653 1.94169 11.1653 4.78487C11.1653 6.06777 10.7294 7.10796 9.9247 7.87077C11.7688 8.56423 12.8753 10.0552 12.8753 12.1009ZM3.28588 3.01655V6.9346H5.63294C6.97411 6.9346 7.81235 6.17179 7.81235 4.95824C7.81235 3.74468 6.97411 3.01655 5.63294 3.01655H3.28588ZM9.48882 11.9969C9.48882 10.6446 8.61705 9.84713 7.14176 9.84713H3.28588V14.1466H7.14176C8.61705 14.1466 9.48882 13.3491 9.48882 11.9969Z" fill="#293157" />
+                                <path d="M27.0244 10.7142C27.0244 14.4588 24.0738 17.4407 20.3185 17.4407C16.5967 17.4407 13.6797 14.4935 13.6797 10.7142C13.6797 6.9348 16.5967 4.02227 20.352 4.02227C24.0738 3.9876 27.0244 6.96947 27.0244 10.7142ZM17.1332 10.7488C17.1332 12.7945 18.4744 14.2161 20.352 14.2161C22.1962 14.2161 23.5709 12.7252 23.5709 10.7488C23.5709 8.7378 22.1962 7.21219 20.352 7.21219C18.4744 7.21219 17.1332 8.66845 17.1332 10.7488Z" fill="#293157" />
+                                <path d="M41.7767 15.9494V19.5554C41.7767 20.561 41.0726 21.2544 40.1673 21.2544C39.2285 21.2544 38.5243 20.4916 38.5243 19.5554V17.1283H30.0414V19.5208C30.0414 20.5263 29.3373 21.2544 28.432 21.2544C27.4932 21.2544 26.7891 20.4916 26.7891 19.5208V15.9494C26.7891 15.0479 27.3926 14.3198 28.2308 14.2158C29.1696 13.0369 29.5049 10.9219 29.6726 7.48923C29.7061 6.83045 29.7396 6.34502 29.7396 5.99829C29.7732 4.99278 30.4773 4.29932 31.4832 4.29932H38.0214C39.0273 4.29932 39.7649 5.06212 39.7649 6.10231V14.2158H40.1002C41.039 14.1811 41.7767 14.9439 41.7767 15.9494ZM36.3449 7.24652H32.7908C32.7573 7.45456 32.7573 7.73194 32.7573 8.00933C32.6232 10.8178 32.2544 12.7595 31.6173 14.1811H36.3449V7.24652Z" fill="#293157" />
+                                <path d="M43.3008 15.8937V6.25465C43.3008 5.24913 44.0384 4.48633 44.9773 4.48633H52.7561C53.7284 4.48633 54.4661 5.24913 54.4661 6.25465V15.8937C54.4661 16.8992 53.7284 17.6621 52.7561 17.6621C51.8173 17.6621 51.0796 16.8992 51.0796 15.8937V7.43353H46.6873V15.8937C46.6873 16.8992 45.9496 17.6621 45.0108 17.6621C44.072 17.6621 43.3008 16.8992 43.3008 15.8937Z" fill="#293157" />
+                                <path d="M70.0927 10.9009C70.0927 14.7843 67.5445 17.6621 64.0575 17.6621C62.5151 17.6621 61.2074 17.1073 60.3357 16.1018V20.5746C60.3357 21.5802 59.598 22.343 58.6592 22.343C57.6869 22.343 56.9492 21.5802 56.9492 20.5746V5.90797C56.9492 4.90245 57.6869 4.17432 58.6257 4.17432C59.531 4.17432 60.2016 4.86778 60.2686 5.83862C61.1069 4.79843 62.448 4.20899 64.0575 4.20899C67.5445 4.17432 70.0927 6.98283 70.0927 10.9009ZM66.6392 10.9355C66.6392 8.85517 65.298 7.36423 63.4204 7.36423C61.5427 7.36423 60.2686 8.78582 60.2686 10.9009C60.2686 13.0159 61.5427 14.4722 63.4204 14.4722C65.298 14.4722 66.6392 12.9813 66.6392 10.9355Z" fill="#293157" />
+                                <path d="M84.4092 10.9007C84.4092 14.6454 81.4586 17.6272 77.7033 17.6272C73.9815 17.6272 71.0645 14.68 71.0645 10.9007C71.0645 7.12133 73.9815 4.2088 77.7368 4.2088C81.4251 4.17412 84.4092 7.156 84.4092 10.9007ZM74.4845 10.9354C74.4845 12.9811 75.8256 14.4026 77.7033 14.4026C79.5474 14.4026 80.9221 12.9117 80.9221 10.9354C80.9221 8.92432 79.5474 7.39871 77.7033 7.39871C75.8592 7.39871 74.4845 8.85497 74.4845 10.9354Z" fill="#293157" />
+                                <path d="M86.1191 16.6848V6.76832C86.1191 5.76281 86.8568 5 87.7956 5C88.3991 5 88.8685 5.31206 89.2038 5.72813L93.0597 10.9638L96.9156 5.72813C97.2174 5.31206 97.6868 5 98.2903 5C99.2627 5 100 5.76281 100 6.76832V16.6848C100 17.6903 99.2627 18.4878 98.2903 18.4878C97.318 18.4878 96.6138 17.725 96.6138 16.6848V11.6225L94.0321 14.9512C93.7974 15.2285 93.4286 15.4019 93.0262 15.4019C92.6238 15.4019 92.2215 15.2632 91.9868 14.9512L89.4386 11.6225V16.6848C89.4386 17.6903 88.7344 18.4878 87.7621 18.4878C86.8568 18.4878 86.1191 17.6903 86.1191 16.6848Z" fill="#293157" />
+                            </svg>
+                        </a>
+                    </div>
+                    <ul class="header__nav">
+                        <li class="header__nav-item header__nav-item_about">
+                            <a href="about.html" class="header__nav-link header__nav-link_about">О компании</a>
+                        </li>
+                        <li class="header__nav-item header__nav-item_articles">
+                            <a href="articles.html" class="header__nav-link header__nav-link_articles">Статьи</a>
+                        </li>
+                        <li class="header__nav-item header__nav-item_projects">
+                            <a href="projects.html" class="header__nav-link header__nav-link_projects">Проекты</a>
+                        </li>
+                        <li class="header__nav-item header__nav-item_services">
+                            <a href="services.html" class="header__nav-link header__nav-link_services">Услуги</a>
+                        </li>
+                        <li class="header__nav-item header__nav-item_contacts">
+                            <a href="contacts.html" class="header__nav-link header__nav-link_contacts">Контакты</a>
+                        </li>
+                    </ul>
+                    <a href="tel:88452509331" class="header__phone">8 (8452) 509 331</a>
+                    <a href="#" class="header__cart">
+                        <svg class="header__cart-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.875 14.75H28.125" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="20" cy="20" r="19.5" stroke="#FED361" />
+                            <path d="M13.75 10.9165L10.875 14.7498V28.1665C10.875 28.6748 11.0769 29.1623 11.4364 29.5218C11.7958 29.8812 12.2833 30.0832 12.7917 30.0832H26.2083C26.7167 30.0832 27.2042 29.8812 27.5636 29.5218C27.9231 29.1623 28.125 28.6748 28.125 28.1665V14.7498L25.25 10.9165H13.75Z" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M23.3327 18.583C23.3327 19.5997 22.9288 20.5747 22.2099 21.2936C21.491 22.0125 20.516 22.4163 19.4993 22.4163C18.4827 22.4163 17.5077 22.0125 16.7888 21.2936C16.0699 20.5747 15.666 19.5997 15.666 18.583" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span class="header__cart-count">10</span>
+                    </a>
+                    <button class="header__burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="header__mobile-menu">
+                        <div class="mobile-menu__content">
+                            <ul class="mobile-menu__nav">
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_about">
+                                    <a href="about.html" class="mobile-menu__nav-link mobile-menu__nav-link_about">О компании</a>
+                                </li>
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_articles">
+                                    <a href="articles.html" class="mobile-menu__nav-link mobile-menu__nav-link_articles">Статьи</a>
+                                </li>
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_projects">
+                                    <a href="projects.html" class="mobile-menu__nav-link mobile-menu__nav-link_projects">Проекты</a>
+                                </li>
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_services">
+                                    <a href="services.html" class="mobile-menu__nav-link mobile-menu__nav-link_services">Услуги</a>
+                                </li>
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_contacts">
+                                    <a href="contacts.html" class="mobile-menu__nav-link mobile-menu__nav-link_contacts">Контакты</a>
+                                </li>
+                            </ul>
+                            <a href="tel:88452509331" class="mobile-menu__phone">8 (8452) 509 331</a>
+                            <div class="mobile-menu__soc">
+                                <a href="#" class="mobile-menu__soc-link mobile-menu__soc-link_whatsapp">
+                                    <svg class="mobile-menu__soc-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.3">
+                                            <path d="M14.5708 5.92871C10.6699 5.92871 7.49751 9.1008 7.49609 13C7.49553 14.3363 7.86943 15.6375 8.57721 16.7634L8.74528 17.0309L8.03097 19.6405L10.7074 18.9384L10.9657 19.0918C12.0514 19.7362 13.296 20.0769 14.5651 20.0775H14.5679C18.4657 20.0775 21.638 16.9051 21.6398 13.0056C21.6406 11.116 20.9056 9.33928 19.5704 8.00265C18.2351 6.66573 16.4596 5.92928 14.5708 5.92871ZM18.7306 16.0403C18.5534 16.5369 17.704 16.9903 17.2957 17.051C16.9295 17.1058 16.4658 17.1285 15.9568 16.9667C15.6482 16.8688 15.2521 16.7379 14.7448 16.519C12.6118 15.5983 11.219 13.4508 11.1128 13.3091C11.0066 13.1672 10.2446 12.1565 10.2446 11.11C10.2446 10.0635 10.7937 9.54937 10.9887 9.33644C11.1835 9.12351 11.414 9.07042 11.5557 9.07042C11.6973 9.07042 11.8393 9.07184 11.9631 9.0778C12.0937 9.08433 12.2688 9.0284 12.4415 9.44262C12.6186 9.86848 13.0439 10.9147 13.097 11.0211C13.1501 11.1276 13.1856 11.2517 13.1146 11.3936C13.0436 11.5353 13.0084 11.6242 12.902 11.7482C12.7955 11.8723 12.6788 12.0253 12.5831 12.1207C12.4767 12.2266 12.3659 12.3419 12.49 12.5545C12.6141 12.7675 13.0408 13.4636 13.6728 14.0271C14.4847 14.7514 15.1698 14.976 15.3825 15.0824C15.5951 15.1889 15.7192 15.171 15.8429 15.0293C15.967 14.8874 16.3744 14.4084 16.5161 14.1958C16.6578 13.9831 16.7994 14.0183 16.9945 14.0893C17.1892 14.1603 18.2346 14.6745 18.4472 14.7809C18.6599 14.8874 18.8015 14.9405 18.8546 15.0293C18.9077 15.1179 18.9077 15.5438 18.7306 16.0403Z" fill="#939393" />
+                                            <path d="M14 0C6.26809 0 0 6.26809 0 14C0 21.7319 6.26809 28 14 28C21.7319 28 28 21.7319 28 14C28 6.26809 21.7319 0 14 0ZM14.5672 21.5142C14.567 21.5142 14.5675 21.5142 14.5672 21.5142H14.5638C13.1398 21.5136 11.7407 21.1564 10.498 20.4785L5.98759 21.6618L7.19476 17.2527C6.45007 15.9624 6.05828 14.4985 6.05913 12.9992C6.06055 8.30796 9.87768 4.4914 14.5672 4.4914C16.8433 4.49225 18.9797 5.37833 20.5861 6.98666C22.1924 8.5947 23.0768 10.7325 23.0756 13.006C23.0737 17.6973 19.2565 21.5142 14.5672 21.5142Z" fill="#939393" />
+                                        </g>
+                                    </svg>
+                                </a>
+                                <a href="#" class="mobile-menu__soc-link mobile-menu__soc_youtube">
+                                    <svg class="mobile-menu__soc-icon" width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.3">
+                                            <path d="M11.9688 16.0479L16.1494 13.748L11.9688 11.4946V16.0479Z" fill="#939393" />
+                                            <path d="M13.5 0C6.04423 0 0 6.26809 0 14C0 21.7319 6.04423 28 13.5 28C20.9558 28 27 21.7319 27 14C27 6.26809 20.9558 0 13.5 0ZM21.0376 17.2607C20.8578 18.4417 20.3072 19.0831 19.1495 19.2188C17.8556 19.3704 14.9466 19.4402 13.6536 19.4402C12.3157 19.4402 9.60977 19.382 8.259 19.2653C7.09796 19.1651 6.30568 18.4925 6.14607 17.2956C6.02999 16.424 5.95498 15.388 5.95498 13.7408C5.95498 11.907 6.01877 11.1311 6.16852 10.3027C6.38233 9.1205 6.92658 8.54786 8.16893 8.41471C9.47261 8.27474 10.7051 8.2049 13.4625 8.2049C14.8105 8.2049 17.7168 8.2773 19.0594 8.40307C20.2319 8.51294 20.8925 9.25677 21.0374 10.4427C21.1384 11.2702 21.2284 12.455 21.2284 13.7294C21.2287 15.9669 21.0376 17.2607 21.0376 17.2607Z" fill="#939393" />
+                                        </g>
+                                    </svg>
+                                </a>
+                                <a href="#" class="mobile-menu__soc-link mobile-menu__soc_instagram">
+                                    <svg class="mobile-menu__soc-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g opacity="0.3">
+                                            <path d="M17.6476 6.94775L10.2822 6.94775C8.43905 6.94775 6.93945 8.44735 6.93945 10.2905L6.93945 17.7234C6.93945 19.5666 8.43905 21.0661 10.2822 21.0661H17.6476C19.4907 21.0661 20.9903 19.5666 20.9903 17.7234V10.2905C20.9903 8.44735 19.4907 6.94775 17.6476 6.94775ZM13.9789 18.4576C11.4805 18.4576 9.44805 16.4467 9.44805 13.975C9.44805 11.5033 11.4808 9.49241 13.9789 9.49241C16.477 9.49241 18.5098 11.5033 18.5098 13.975C18.5098 16.4467 16.4773 18.4576 13.9789 18.4576ZM18.5904 10.3751C18.0016 10.3751 17.5243 9.89783 17.5243 9.309C17.5243 8.72018 18.0016 8.24294 18.5904 8.24294C19.1792 8.24294 19.6565 8.72018 19.6565 9.309C19.6565 9.89783 19.1792 10.3751 18.5904 10.3751Z" fill="#939393" />
+                                            <path d="M14 0C6.26809 0 0 6.26809 0 14C0 21.7319 6.26809 28 14 28C21.7319 28 28 21.7319 28 14C28 6.26809 21.7319 0 14 0ZM22.6441 17.7229C22.6441 20.4779 20.4027 22.7191 17.6479 22.7191L10.2825 22.7191C7.5275 22.7191 5.28634 20.4776 5.28634 17.7229L5.28634 10.2899C5.28634 7.53488 7.52778 5.29372 10.2825 5.29372L17.6479 5.29372C20.4029 5.29372 22.6441 7.53516 22.6441 10.2899L22.6441 17.7229Z" fill="#939393" />
+                                            <path d="M13.9801 11.1426C12.3917 11.1426 11.0996 12.4131 11.0996 13.9748C11.0996 15.5366 12.3917 16.8071 13.9801 16.8071C15.5686 16.8071 16.8606 15.5366 16.8606 13.9748C16.8606 12.4131 15.5686 11.1426 13.9801 11.1426Z" fill="#939393" />
+                                        </g>
+                                    </svg>
+                                </a>
+                                <a href="#" class="mobile-menu__soc-link mobile-menu__soc_viber">
+                                    <svg class="mobile-menu__soc-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3" d="M14 0C6.26809 0 0 6.26809 0 14C0 21.7319 6.26809 28 14 28C21.7319 28 28 21.7319 28 14C28 6.26809 21.7319 0 14 0ZM13.5264 7.29498C13.6298 7.29299 13.738 7.30889 13.8308 7.30861C13.8686 7.30832 13.9035 7.30548 13.9338 7.29782C17.2771 7.41933 20.1946 10.4585 20.1338 13.8018C20.1338 14.1056 20.2553 14.5919 19.769 14.5919C19.2826 14.5919 19.4042 14.1056 19.4042 13.7411C19.3511 13.3005 19.2787 12.8891 19.1864 12.5058C19.0941 12.1225 18.9814 11.7671 18.8477 11.438C18.6467 10.9443 18.398 10.5099 18.0968 10.1298C17.1937 8.98905 15.8218 8.33521 13.8728 8.02746C13.569 7.9667 13.1435 8.02746 13.1435 7.66264C13.1435 7.34693 13.3254 7.29469 13.5264 7.29498ZM18.1277 13.9233C17.5806 13.9841 17.7021 13.4978 17.6414 13.194C17.2766 11.0664 16.5472 10.2763 14.3591 9.78995C14.0551 9.72919 13.569 9.78995 13.6298 9.30362C13.6905 8.81729 14.1769 8.99984 14.4807 9.06059C16.669 9.30362 18.4318 11.1271 18.4318 13.194C18.3707 13.437 18.5533 13.8626 18.1277 13.9233ZM16.7905 12.8292C16.7905 13.0722 16.7905 13.3763 16.4257 13.437C16.1827 13.437 16.0609 13.2547 16.0001 13.0114C15.9394 12.0998 15.453 11.6135 14.5414 11.4917C14.2984 11.4309 13.9943 11.3702 14.1158 11.0054C14.1766 10.7623 14.4196 10.7623 14.6629 10.7623C15.6963 10.7019 16.7905 11.796 16.7905 12.8292ZM20.1943 19.5157C19.8295 20.5492 18.553 21.5823 17.4588 21.5823C17.3373 21.5215 17.0333 21.5215 16.7295 21.4C11.9882 19.3335 8.46269 15.9902 6.51764 11.1274C5.84904 9.54693 6.5784 8.14897 8.21966 7.60188C8.52344 7.48037 8.82751 7.48037 9.13129 7.60188C9.86064 7.84491 11.6234 10.3373 11.6842 11.0667C11.7449 11.6745 11.3194 11.9783 10.9548 12.2216C10.2255 12.7079 10.2255 13.3765 10.5292 14.0451C11.2586 15.6256 12.4743 16.6588 13.994 17.3884C14.5411 17.6314 15.0882 17.6314 15.4528 17.0236C16.1213 15.9902 16.9722 15.9902 17.8841 16.6588C18.3097 16.9626 18.7957 17.2666 19.2213 17.6314C19.8297 18.1175 20.5591 18.5431 20.1943 19.5157Z" fill="#939393" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="mobile-menu__footer">
+                            <a href="#" class="mobile-menu__cart">
+                                <svg class="mobile-menu__cart-icon" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="17" cy="17" r="16.5" stroke="#293157" />
+                                    <path d="M12 8.6665L9.5 11.9998V23.6665C9.5 24.1085 9.67559 24.5325 9.98816 24.845C10.3007 25.1576 10.7246 25.3332 11.1667 25.3332H22.8333C23.2754 25.3332 23.6993 25.1576 24.0118 24.845C24.3244 24.5325 24.5 24.1085 24.5 23.6665V11.9998L22 8.6665H12Z" fill="#293157" />
+                                    <path d="M9.5 12H24.5" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M20.3327 15.333C20.3327 16.2171 19.9815 17.0649 19.3564 17.69C18.7313 18.3152 17.8834 18.6663 16.9993 18.6663C16.1153 18.6663 15.2674 18.3152 14.6423 17.69C14.0172 17.0649 13.666 16.2171 13.666 15.333" fill="#293157" />
+                                    <path d="M20.3327 15.333C20.3327 16.2171 19.9815 17.0649 19.3564 17.69C18.7313 18.3152 17.8834 18.6663 16.9993 18.6663C16.1153 18.6663 15.2674 18.3152 14.6423 17.69C14.0172 17.0649 13.666 16.2171 13.666 15.333" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p class="mobile-menu__cart-label"><span class="mobile-menu__cart-count">6</span> товаров</p>
+                            </a>
+                            <button class="mobile-menu__close">
+                                <svg class="mobile-menu__close-icon" width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 16.9741L1.00012 1.00011" stroke="#293157" stroke-width="2" />
+                                    <path d="M1 17.0015L15.9999 1.02745" stroke="#293157" stroke-width="2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </menu>
+                <div class="short-header__content">
+                    <ul class="short-header__crumbs">
+                        <li class="short-header__crumb"><a href="/">Главная</a></li>
+                        <li class="short-header__crumb"><a href="projects.html">Проекты</a></li>
+                        <li class="short-header__crumb"><a href="projects.html">СНТ "Машиностроитель"</a></li>
+                    </ul>
+                    <button class="short-header__back back-btn"><svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.938862 10.9393C0.353075 11.5251 0.353075 12.4749 0.938862 13.0607L10.4848 22.6066C11.0706 23.1924 12.0203 23.1924 12.6061 22.6066C13.1919 22.0208 13.1919 21.0711 12.6061 20.4853L4.12084 12L12.6061 3.51472C13.1919 2.92893 13.1919 1.97918 12.6061 1.3934C12.0203 0.80761 11.0706 0.80761 10.4848 1.3934L0.938862 10.9393ZM25.25 10.5L1.99952 10.5L1.99952 13.5L25.25 13.5L25.25 10.5Z" fill="#FED361" />
+                        </svg></button>
+                    <h1 class="short-header__title">СНТ "Машиностроитель"</h1>
+                </div>
+            </div>
+        </section>
+        <section class="project">
+            <div class="wrapper project-wrapper">
+                <div class="project__slider-container">
+                    <div class="project__slider">
+                        <img src="img/projects/project1/project1.jpg" alt="" class="project__slide">
+                        <img src="img/projects/project1/project2.jpg" alt="" class="project__slide">
+                        <img src="img/projects/project1/project3.jpg" alt="" class="project__slide">
+                        <img src="img/projects/project1/project4.jpg" alt="" class="project__slide">
+                    </div>
+                    <div class="project__slider-nav">
+                        <div class="project__slider-count">
+                            <span class="project__slider-cur">1</span>/<span class="project__slider-total">1</span>
+                        </div>
+                        <div class="project__slider-arrows">
+                            <button class="project__slider-arr project__slider-arr_left">
+                                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.938861 10.9393C0.353075 11.5251 0.353075 12.4749 0.938861 13.0607L10.4848 22.6066C11.0706 23.1924 12.0203 23.1924 12.6061 22.6066C13.1919 22.0208 13.1919 21.0711 12.6061 20.4853L4.12084 12L12.6061 3.51472C13.1919 2.92893 13.1919 1.97918 12.6061 1.3934C12.0203 0.807611 11.0706 0.807611 10.4848 1.3934L0.938861 10.9393ZM25.25 10.5L1.99952 10.5L1.99952 13.5L25.25 13.5L25.25 10.5Z" fill="#979797" />
+                                </svg>
+                            </button>
+                            <button class="project__slider-arr project__slider-arr_right">
+                                <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M25.0611 13.0607C25.6469 12.4749 25.6469 11.5251 25.0611 10.9393L15.5152 1.3934C14.9294 0.807612 13.9797 0.807612 13.3939 1.3934C12.8081 1.97918 12.8081 2.92893 13.3939 3.51472L21.8792 12L13.3939 20.4853C12.8081 21.0711 12.8081 22.0208 13.3939 22.6066C13.9797 23.1924 14.9294 23.1924 15.5152 22.6066L25.0611 13.0607ZM0.75 13.5L24.0005 13.5V10.5L0.75 10.5L0.75 13.5Z" fill="#979797" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="project__content">
+                    <h2 class="project__title">СНТ "Машиностроитель"</h2>
+                    <p class="project__desc">Установка системы водоподготовки</p>
+                    <p class="project__text">Перед началом соответствующих работ в воде наблюдалось повышенное содержание железа (8 единиц), был обнаружен повышенный сухой остаток. Также перед специалистами ООО "Водпром" стояла задача снизить жёсткость воды, устранить мутность и цветность, что было достигнуто в сжатые сроки.</p>
+                </div>
+            </div>
+        </section>
+        <section class="other-projects">
+            <div class="wrapper other-projects-wrapper">
+                <p class="other-projects__title">Другие проекты</p>
+                <div class="other-projects__slider">
+                    <a href="#" class="other-projects__slide">
+                        <div class="other-projects__slide-header" style="background-image: url(img/projects/project1.jpg)">
+                            <p class="other-projects__slide-date">17/01/2020</p>
+                            <p class="other-projects__slide-type">Водоподготовка</p>
+                        </div>
+                        <div class="other-projects__slide-content">
+                            <p class="other-projects__slide-title">
+                                СНТ "Машиностроитель"
+                            </p>
+                            <p class="other-projects__slide-desc">
+                                Установка системы водоподготовки
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="other-projects__slide">
+                        <div class="other-projects__slide-header" style="background-image: url(img/projects/project1.jpg)">
+                            <p class="other-projects__slide-date">17/01/2020</p>
+                            <p class="other-projects__slide-type">Водоподготовка</p>
+                        </div>
+                        <div class="other-projects__slide-content">
+                            <p class="other-projects__slide-title">
+                                СНТ "Машиностроитель"
+                            </p>
+                            <p class="other-projects__slide-desc">
+                                Установка системы водоподготовки
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="other-projects__slide">
+                        <div class="other-projects__slide-header" style="background-image: url(img/projects/project1.jpg)">
+                            <p class="other-projects__slide-date">17/01/2020</p>
+                            <p class="other-projects__slide-type">Водоподготовка</p>
+                        </div>
+                        <div class="other-projects__slide-content">
+                            <p class="other-projects__slide-title">
+                                СНТ "Машиностроитель"
+                            </p>
+                            <p class="other-projects__slide-desc">
+                                Установка системы водоподготовки
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="other-projects__slide">
+                        <div class="other-projects__slide-header" style="background-image: url(img/projects/project1.jpg)">
+                            <p class="other-projects__slide-date">17/01/2020</p>
+                            <p class="other-projects__slide-type">Водоподготовка</p>
+                        </div>
+                        <div class="other-projects__slide-content">
+                            <p class="other-projects__slide-title">
+                                СНТ "Машиностроитель"
+                            </p>
+                            <p class="other-projects__slide-desc">
+                                Установка системы водоподготовки
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="footer">
+            <div class="wrapper footer-wrapper">
+                <p class="footer__info">&copy; Общество с ограниченной ответственностью 2018-2019</p>
+                <a href="#" class="footer__policy">Пользовательское соглашение и&nbsp;политика конфиденциальности</a>
+                <p class="footer__asap">Разработка сайта —<br />
+                    <a href="https://asap-ag.ru/" target="_blank" class="footer__asap-link">digital–агентство ASAP</a></p>
+            </div>
+        </section>
+    </main>
+    <script src="vendors/js/jquery-3.4.1.min.js"></script>
+    <script src="vendors/js/slick.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
