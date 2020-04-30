@@ -9,7 +9,7 @@
     <meta name="keywords" content="ключевые, слова, через, запятую">
     <link rel="shortcut icon" type='image/png' href="img/icons/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700|Rubik:400,500,700&display=swap" rel="stylesheet">
-    <title>Товар</title>
+    <title>Корзина</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="vendors/css/slick.css" type="text/css">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=a5bc5feb-0468-4d6f-8e7d-2bf6551c429a&lang=ru_RU" type="text/javascript">
@@ -17,6 +17,15 @@
 </head>
 
 <body>
+    <a href="#" class="success-popup popup">
+        <span class="popup__text">Товар добавлен в&nbsp;корзину</span>
+        <span class="popup__icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="25.5" stroke="#FED361" stroke-width="5"/>
+            <path d="M18 29L25 36L40 21" stroke="#FED361" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </span>
+    </a>
     <main class="main">
         <section class="header short-header">
             <div class="wrapper header-wrapper">
@@ -143,146 +152,164 @@
                 <div class="short-header__content">
                     <ul class="short-header__crumbs">
                         <li class="short-header__crumb"><a href="/">Главная</a></li>
-                        <li class="short-header__crumb"><a href="products.html">Каталог товаров</a></li>
-                        <li class="short-header__crumb"><a href="products.html">VODPROM SW 08x17 2,5”</a></li>
+                        <li class="short-header__crumb"><a href="products.html">Корзина</a></li>
                     </ul>
                     <button class="short-header__back back-btn"><svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.938862 10.9393C0.353075 11.5251 0.353075 12.4749 0.938862 13.0607L10.4848 22.6066C11.0706 23.1924 12.0203 23.1924 12.6061 22.6066C13.1919 22.0208 13.1919 21.0711 12.6061 20.4853L4.12084 12L12.6061 3.51472C13.1919 2.92893 13.1919 1.97918 12.6061 1.3934C12.0203 0.80761 11.0706 0.80761 10.4848 1.3934L0.938862 10.9393ZM25.25 10.5L1.99952 10.5L1.99952 13.5L25.25 13.5L25.25 10.5Z" fill="#FED361" />
                         </svg></button>
-                    <h1 class="short-header__title">VODPROM SW 08x17 2,5”</h1>
+                    <h1 class="short-header__title">Корзина</h1>
                 </div>
             </div>
         </section>
-        <section class="product-info">
-            <div class="wrapper product-info-wrapper">
-                <div class="product-info__brief">
-                    <div class="product-info__pic">
-                        <img src="img/products/Промышленные_объекты/product1.jpg" alt="">
-                    </div>
-                    <div class="product-info__desc">
-                        <div class="product-info__desc-info">
-                            <h2 class="product-info__desc-title">VODPROM SW 08x17 2,5”</h2>
-                            <ul class="product-info__desc-features">
-                                <li class="product-info__desc-feature">
-                                    Высота - 432мм
-                                </li>
-                                <li class="product-info__desc-feature">
-                                    Диаметр - 207мм
-                                </li>
-                                <li class="product-info__desc-feature">
-                                    Объем загрузки - 5-7л
-                                </li>
-                                <li class="product-info__desc-price">
-                                    <p class="product-info__desc-price-label">Цена:</p>
-                                    <p class="product-info__desc-price-price">2000 р</p>
-                                </li>
-                            </ul>
+        <section class="cart">
+            <div class="wrapper cart-wrapper">
+                <div class="cart-list cart-list_active cart-list_goods">
+                    <a href="product.html" class="cart-list__card cart-list__card_goods">
+                        <div class="cart-list__card-header">
+                            <img src="img/products/Промышленные_объекты/product1.jpg" alt="" class="cart-list__card-header-pic">
                         </div>
-                        <div class="product-info__desc-buttons">
-                            <a href="#" class="product-info__desc-doc">Скачать документацию</a>
-                            <button class="product-info__desc-order-btn yellow-btn">Заказать товар</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-info__full">
-                    <div class="product-info__full-tabs">
-                        <button class="product-info__full-tab product-info__full-tab_active product-info__full-tab_features">Характеристики</button>
-                        <button class="product-info__full-tab product-info__full-tab_description">Описание</button>
-                    </div>
-                    <div class="product-info__full-container">
-                        <div class="product-info__full-tab-content product-info__full-tab-content_features product-info__full-tab-content_active">
-                            <div class="product-info__full-tab-table">
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Диаметр соединения
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        3/4"
-                                    </p>
-                                </span>
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Рабочее давление
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        8 бар
-                                    </p>
-                                </span>
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Максимальная производительность
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        5 м3/ч
-                                    </p>
-                                </span>
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Площадь фильтрующей поверхности (диски)
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        180 см2
-                                    </p>
-                                </span>
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Площадь фильтрующей поверхности (сетка)
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        160 см2
-                                    </p>
-                                </span>
-                                <span class="product-info__full-tab-item">
-                                    <p class="product-info__full-tab-title">
-                                        Максимальная температура
-                                    </p>
-                                    <p class="product-info__full-tab-value">
-                                        60 С
-                                    </p>
-                                </span>
+                        <div class="cart-list__card-content">
+                            <p class="cart-list__card-title">VODPROM SW 08x17 2,5”</p>
+                            <div class="cart-list__card-desc">
+                                <p>Высота - 432мм</p>
+                                <p>Диаметр - 207мм</p>
+                                <p>Объем загрузки - 5-7л</p>
                             </div>
+                            <div class="cart-list__card-price">
+                                <p class="cart-list__card-price-label">
+                                    Цена
+                                </p>
+                                <p class="cart-list__card-price-price">2000 р</p>
+                            </div>
+                            <div class="cart-list__card-controls">
+                                <button class="cart-list__card-control cart-list__card-control_minus">-</button>
+                                <span class="cart-list__card-control cart-list__card-control_amount">1</span>
+                                <button class="cart-list__card-control cart-list__card-control_plus">+</button>
+                            </div>
+                            <button href="#" class="cart-list__card-delete-btn yellow-btn">Удалить</button>
                         </div>
-                        <div class="product-info__full-tab-content product-info__full-tab-content_description">
-                            <p>Автоматический самопромывной фильтр предназначен для удаления из воды механических примесей (песок, мелкие механические частицы, окисленное железо) и коллоидных взвесей путем осаждения в фильтрующем слое и сбросом накопленных загрязнений в дренажную линию во время обратной промывки. Химической регенерации не требует.</p>
+                    </a>
+                    <a href="product.html" class="cart-list__card cart-list__card_goods">
+                        <div class="cart-list__card-header">
+                            <img src="img/products/Промышленные_объекты/product1.jpg" alt="" class="cart-list__card-header-pic">
                         </div>
-                    </div>
-                    <a href="docs/Опросный лист для промышленных предприятий.doc" class="product-info__download-btn yellow-btn">Скачать опросный лист</a>
+                        <div class="cart-list__card-content">
+                            <p class="cart-list__card-title">VODPROM SW 08x17 2,5”</p>
+                            <div class="cart-list__card-desc">
+                                <p>Высота - 432мм</p>
+                                <p>Диаметр - 207мм</p>
+                                <p>Объем загрузки - 5-7л</p>
+                            </div>
+                            <div class="cart-list__card-price">
+                                <p class="cart-list__card-price-label">
+                                    Цена
+                                </p>
+                                <p class="cart-list__card-price-price">2000 р</p>
+                            </div>
+                             <div class="cart-list__card-controls">
+                                <button class="cart-list__card-control cart-list__card-control_minus">-</button>
+                                <span class="cart-list__card-control cart-list__card-control_amount">1</span>
+                                <button class="cart-list__card-control cart-list__card-control_plus">+</button>
+                            </div>
+                            <button href="#" class="cart-list__card-delete-btn yellow-btn">Удалить</button>
+                        </div>
+                    </a>
+                    <a href="product.html" class="cart-list__card cart-list__card_goods">
+                        <div class="cart-list__card-header">
+                            <img src="img/products/Промышленные_объекты/product1.jpg" alt="" class="cart-list__card-header-pic">
+                        </div>
+                        <div class="cart-list__card-content">
+                            <p class="cart-list__card-title">VODPROM SW 08x17 2,5”</p>
+                            <div class="cart-list__card-desc">
+                                <p>Высота - 432мм</p>
+                                <p>Диаметр - 207мм</p>
+                                <p>Объем загрузки - 5-7л</p>
+                            </div>
+                            <div class="cart-list__card-price">
+                                <p class="cart-list__card-price-label">
+                                    Цена
+                                </p>
+                                <p class="cart-list__card-price-price">2000 р</p>
+                            </div>
+                             <div class="cart-list__card-controls">
+                                <button class="cart-list__card-control cart-list__card-control_minus">-</button>
+                                <span class="cart-list__card-control cart-list__card-control_amount">1</span>
+                                <button class="cart-list__card-control cart-list__card-control_plus">+</button>
+                            </div>
+                            <button href="#" class="cart-list__card-delete-btn yellow-btn">Удалить</button>
+                        </div>
+                    </a>
+                    <a href="product.html" class="cart-list__card cart-list__card_goods">
+                        <div class="cart-list__card-header">
+                            <img src="img/products/Промышленные_объекты/product1.jpg" alt="" class="cart-list__card-header-pic">
+                        </div>
+                        <div class="cart-list__card-content">
+                            <p class="cart-list__card-title">VODPROM SW 08x17 2,5”</p>
+                            <div class="cart-list__card-desc">
+                                <p>Высота - 432мм</p>
+                                <p>Диаметр - 207мм</p>
+                                <p>Объем загрузки - 5-7л</p>
+                            </div>
+                            <div class="cart-list__card-price">
+                                <p class="cart-list__card-price-label">
+                                    Цена
+                                </p>
+                                <p class="cart-list__card-price-price">2000 р</p>
+                            </div>
+                             <div class="cart-list__card-controls">
+                                <button class="cart-list__card-control cart-list__card-control_minus">-</button>
+                                <span class="cart-list__card-control cart-list__card-control_amount">1</span>
+                                <button class="cart-list__card-control cart-list__card-control_plus">+</button>
+                            </div>
+                            <button href="#" class="cart-list__card-delete-btn yellow-btn">Удалить</button>
+                        </div>
+                    </a>
                 </div>
+                <a href="docs/Опросный лист для промышленных предприятий.doc" class="cart-list__download-btn yellow-btn">Скачать опросный лист</a>
+            </div>
             </div>
         </section>
-        <section class="more-products">
-            <div class="wrapper more-products-wrapper">
-                <p class="more-products__title">Рекомендуем</p>
-                <div class="more-products__slider">
-                    <a href="#" class="more-products__slide">
-                        <div class="more-products__slide-header" style="background-image: url(img/products/Промышленные_объекты/product1.jpg)">
-                        </div>
-                        <div class="more-products__slide-desc">
-                            <p>VODPROM SW 08x17 2,5”</p>
-                        </div>
-                    </a>
-                    <a href="#" class="more-products__slide">
-                        <div class="more-products__slide-header" style="background-image: url(img/products/Промышленные_объекты/product1.jpg)">
-                        </div>
-                        <div class="more-products__slide-desc">
-                            <p>VODPROM SW 08x17 2,5”</p>
-                        </div>
-                    </a>
-                    <a href="#" class="more-products__slide">
-                        <div class="more-products__slide-header" style="background-image: url(img/products/Промышленные_объекты/product1.jpg)">
-                        </div>
-                        <div class="more-products__slide-desc">
-                            <p>VODPROM SW 08x17 2,5”</p>
-                        </div>
-                    </a>
-                    <a href="#" class="more-products__slide">
-                        <div class="more-products__slide-header" style="background-image: url(img/products/Промышленные_объекты/product1.jpg)">
-                        </div>
-                        <div class="more-products__slide-desc">
-                            <p>VODPROM SW 08x17 2,5”</p>
-                        </div>
-                    </a>
+        <section class="make-order">
+            <div class="wrapper make-order-wrapper">
+                <div class="make-order__total-sum">
+                    <span class="make-order__total-sum-label">
+                        Общая сумма: <span class="make-order__total-sum-count">12000 рублей</span>
+                    </span>
                 </div>
+                <h2 class="make-order__title">Оформление заявки</h2>
+                <form class="make-order__order-form" name="order">
+                    <div class="make-order__input-container">
+                        <input type="text" name="name" class="make-order__input make-order__input_name" placeholder="Ваше имя" data-role="required">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="11" fill="#FF1E1E" />
+                            <path d="M7 7L15 15" stroke="white" />
+                            <path d="M7 15L15 7" stroke="white" />
+                        </svg>
+                    </div>
+                    <div class="make-order__input-container">
+                        <input type="text" name="phone" class="make-order__input make-order__input_phone" placeholder="Ваш телефон" data-role="phone required">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="11" fill="#FF1E1E" />
+                            <path d="M7 7L15 15" stroke="white" />
+                            <path d="M7 15L15 7" stroke="white" />
+                        </svg>
+                    </div>
+                    <div class="make-order__input-container">
+                        <input type="text" name="email" class="make-order__input make-order__input_email" placeholder="Ваша почта" data-role="email required">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="11" fill="#FF1E1E" />
+                            <path d="M7 7L15 15" stroke="white" />
+                            <path d="M7 15L15 7" stroke="white" />
+                        </svg>
+                    </div>
+                    <div class="make-order__order-form-container">
+                        <input type="submit" class="make-order__send-btn yellow-btn" value="ОТПРАВИТЬ ЗАЯВКУ">
+                        <span class="make-order__checkbox-container">
+                            <input type="checkbox" name="policy" id="policy" class="make-order__policy" data-role="checkbox required">
+                            <label class="make-order__policy-label" for="policy">Я согласен на обработку персональных данных</label>
+                        </span>
+                    </div>
+                </form>
             </div>
         </section>
         <section class="footer">
@@ -296,6 +323,7 @@
     </main>
     <script src="vendors/js/jquery-3.4.1.min.js"></script>
     <script src="vendors/js/slick.min.js"></script>
+    <script src="vendors/js/formValidate.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>
 

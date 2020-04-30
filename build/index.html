@@ -12,15 +12,68 @@
     <title>ВодПром</title>
     <link rel="stylesheet" href="css/main.css" type="text/css">
     <link rel="stylesheet" href="vendors/css/slick.css" type="text/css">
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=a5bc5feb-0468-4d6f-8e7d-2bf6551c429a&lang=ru_RU" type="text/javascript">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=a5bc5feb-0468-4d6f-8e7d-2bf6551c429a&lang=ru_RU">
     </script>
 </head>
 
 <body>
+    <div class="overlay"></div>
+    <div class="modal modal_success">
+        <button class="modal__close">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L10 10" stroke="#979797" />
+                <path d="M10 1L1 10" stroke="#979797" />
+            </svg>
+        </button>
+        <p class="modal__title">Заявка успешно отправлена</p>
+        <div class="modal__icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28" cy="28" r="25.5" stroke="#FED361" stroke-width="5" />
+                <path d="M18 29L25 36L40 21" stroke="#FED361" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+    <div class="modal modal_order">
+        <button class="modal__close">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L10 10" stroke="#979797" />
+                <path d="M10 1L1 10" stroke="#979797" />
+            </svg>
+        </button>
+        <p class="modal__title">Оформление заявки</p>
+        <form class="modal__form modal__form_order" name="order-form" id="order-form" enctype="multipart/form-data">
+            <input type="hidden" name="service" value="" class="modal-form__input modal-form__input_service" data-role>
+            <div class="modal-form__input-container">
+                <input type="text" name="name" class="modal-form__input modal-form__input_name" placeholder="Имя" data-role="required">
+                <svg class="modal-form__error-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="11" fill="#FF1E1E" />
+                    <path d="M7 7L15 15" stroke="white" />
+                    <path d="M7 15L15 7" stroke="white" />
+                </svg>
+            </div>
+            <div class="modal-form__input-container">
+                <input type="text" name="phone" class="modal-form__input modal-form__input_phone" placeholder="Номер телефона" data-role="phone required">
+                <svg class="modal-form__error-icon" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="11" fill="#FF1E1E" />
+                    <path d="M7 7L15 15" stroke="white" />
+                    <path d="M7 15L15 7" stroke="white" />
+                </svg>
+            </div>
+            <div class="modal-form__input-container modal-form__input-container_files">
+                <input type="file" name="docs" id="docs" multiple class="modal-form__input modal-form__input_docs" data-role>
+                <label for="docs" class="modal-form__docs-label">Прикрепить документы</label>
+                <svg class="modal-form__docs-icon" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.3906 9.99392L7.68708 4.2904C7.28778 3.87807 6.80026 3.67194 6.22437 3.67194C5.68771 3.67194 5.23299 3.85844 4.8599 4.2315C4.4867 4.60449 4.30024 5.05938 4.30024 5.59607C4.30024 6.17199 4.5064 6.65958 4.91869 7.05878L8.94362 11.0836C9.00902 11.1491 9.08119 11.1818 9.15966 11.1818C9.26439 11.1818 9.41818 11.0802 9.62091 10.8775C9.82374 10.6746 9.92507 10.5207 9.92507 10.416C9.92507 10.3376 9.8925 10.2656 9.82704 10.2001L5.80225 6.17523C5.63865 5.99849 5.55685 5.80547 5.55685 5.59607C5.55685 5.40617 5.61898 5.24914 5.74335 5.12481C5.86764 5.00045 6.02481 4.93832 6.21461 4.93832C6.4371 4.93832 6.6334 5.01675 6.80363 5.17381L12.507 10.8773C12.9195 11.2895 13.1257 11.7639 13.1257 12.3005C13.1257 12.7196 12.9881 13.0664 12.7134 13.3412C12.4383 13.616 12.0916 13.7537 11.6726 13.7537C11.1359 13.7537 10.6615 13.5473 10.2494 13.135L2.63147 5.50746C2.13408 5.01011 1.88552 4.41779 1.88552 3.7306C1.88552 3.03685 2.12431 2.44452 2.60211 1.95373C3.07983 1.46301 3.66552 1.21755 4.35931 1.21755C5.02676 1.21755 5.61898 1.46951 6.13601 1.97326L12.085 7.93198C12.1504 7.99751 12.2256 8.03 12.3108 8.03C12.4155 8.03 12.5677 7.93022 12.7672 7.73066C12.9669 7.5311 13.0664 7.37895 13.0664 7.27426C13.0664 7.19583 13.0338 7.12376 12.9685 7.05833L7.02932 1.10935C6.27674 0.369828 5.38349 0 4.34944 0C3.30886 0 2.42868 0.363295 1.70879 1.08971C0.988833 1.81617 0.628906 2.69972 0.628906 3.74023C0.628906 4.76114 0.998597 5.64792 1.73812 6.40054L9.36582 14.0184C10.0202 14.6726 10.7891 15 11.6726 15C12.4383 15 13.0798 14.7414 13.5967 14.2243C14.1137 13.7076 14.3725 13.066 14.3725 12.3001C14.3723 11.4037 14.0449 10.6349 13.3906 9.99392Z" fill="#828282" />
+                </svg>
+                <p class="modal-form__docs-count"></p>
+            </div>
+            <input type="submit" class="modal-form__send-btn yellow-btn" value="ОТПРАВИТЬ ЗАЯВКУ">
+        </form>
+    </div>
     <main class="main">
         <section class="header">
             <div class="wrapper header-wrapper">
-                <menu class="header__menu">
+                <nav class="header__menu">
                     <div class="header__logo">
                         <a href="/" class="header__logo-link">
                             <img src="img/icons/logo.png" alt="ВодПром" class="header__logo-img">
@@ -36,7 +89,7 @@
                         </a>
                     </div>
                     <ul class="header__nav">
-                    	 <li class="header__nav-item header__nav-item_production">
+                        <li class="header__nav-item header__nav-item_production">
                             <a href="products.html" class="header__nav-link header__nav-link_production">Продукция</a>
                         </li>
                         <li class="header__nav-item header__nav-item_about">
@@ -56,7 +109,7 @@
                         </li>
                     </ul>
                     <a href="tel:88452509331" class="header__phone">8 (8452) 509 331</a>
-                    <a href="#" class="header__cart">
+                    <a href="cart.html" class="header__cart">
                         <svg class="header__cart-icon" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.875 14.75H28.125" stroke="#FED361" stroke-linecap="round" stroke-linejoin="round" />
                             <circle cx="20" cy="20" r="19.5" stroke="#FED361" />
@@ -73,7 +126,7 @@
                     <div class="header__mobile-menu">
                         <div class="mobile-menu__content">
                             <ul class="mobile-menu__nav">
-                            	 <li class="mobile-menu__nav-item mobile-menu__nav-item_production">
+                                <li class="mobile-menu__nav-item mobile-menu__nav-item_production">
                                     <a href="products.html" class="mobile-menu__nav-link mobile-menu__nav-link_production">Продукция</a>
                                 </li>
                                 <li class="mobile-menu__nav-item mobile-menu__nav-item_about">
@@ -145,21 +198,21 @@
                             </button>
                         </div>
                     </div>
-                </menu>
+                </nav>
                 <div class="header__content">
                     <h1 class="header__title title">Производство и&nbsp;установка водоотчистного оборудования</h1>
                     <div class="header__buttons">
                         <a href="products.html" class="header__production-btn transparent-btn">Продукция</a>
                         <div class="header__buttons-table">
-                            <a href="#" class="header__buttons-table-btn header__manuf-btn">
+                            <span class="header__buttons-table-btn header__manuf-btn">
                                 Для производства
-                            </a>
-                            <a href="#" class="header__buttons-table-btn header__office-btn">
+                            </span>
+                            <span class="header__buttons-table-btn header__office-btn">
                                 Для квартир и офиса
-                            </a>
-                            <a href="#" class="header__buttons-table-btn header__home-btn">
+                            </span>
+                            <span class="header__buttons-table-btn header__home-btn">
                                 Для дома
-                            </a>
+                            </span>
                         </div>
                     </div>
                     <div class="header__soc">
@@ -204,28 +257,28 @@
                             <span class="service__title">Анализ воды</span>
                             <p class="service__desc">Предварительный анализ позволяет определить уровень и характер загрязнения воды.</p>
                             <p class="service__price">Стоимость химического анализа – от 2000 р.</p>
-                            <a href="#" class="service__btn yellow-btn">Заказать услугу</a>
+                            <button class="service__btn yellow-btn">Заказать услугу</button>
                         </div>
                         <div class="services__service">
                             <img src="img/services/service1.jpg" alt="" class="service__bg">
                             <span class="service__title">Проектирование и подбор</span>
                             <p class="service__desc">Предварительный анализ позволяет определить уровень и характер загрязнения воды.</p>
                             <p class="service__price">Стоимость химического анализа – от 2000 р.</p>
-                            <a href="#" class="service__btn yellow-btn">Заказать услугу</a>
+                            <button class="service__btn yellow-btn">Заказать услугу</button>
                         </div>
                         <div class="services__service">
                             <img src="img/services/service1.jpg" alt="" class="service__bg">
                             <span class="service__title">Монтаж</span>
                             <p class="service__desc">Предварительный анализ позволяет определить уровень и характер загрязнения воды. Предварительный анализ позволяет определить уровень </p>
                             <p class="service__price">Стоимость химического анализа – от 2000 р.</p>
-                            <a href="#" class="service__btn yellow-btn">Заказать услугу</a>
+                            <button class="service__btn yellow-btn">Заказать услугу</button>
                         </div>
                         <div class="services__service">
                             <img src="img/services/service1.jpg" alt="" class="service__bg">
                             <span class="service__title">Обслуживание систем очистки воды</span>
                             <p class="service__desc">Предварительный анализ позволяет определить уровень и характер загрязнения воды.</p>
                             <p class="service__price">Стоимость химического анализа – от 2000 р.</p>
-                            <a href="#" class="service__btn yellow-btn">Заказать услугу</a>
+                            <button class="service__btn yellow-btn">Заказать услугу</button>
                         </div>
                     </div>
                     <div class="services__nav">
@@ -287,14 +340,14 @@
                             </div>
                             <div class="calculate-form__mobile-header">
                                 <div class="calculate-form__mobile-tabs">
-                                    <button class="calculate-form__mobile-tab calculate-form__mobile-tab_physical calculate-form__mobile-tab_active" >
-                                        <p class="calculate-form__mobile-tab-label">Физическим лицам</p>
+                                    <button class="calculate-form__mobile-tab calculate-form__mobile-tab_physical calculate-form__mobile-tab_active">
+                                        <span class="calculate-form__mobile-tab-label">Физическим лицам</span>
                                         <svg class="calculate-form__mobile-tab-arr" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1 1L8 8L15 1" stroke="#293157" />
                                         </svg>
                                     </button>
                                     <button class="calculate-form__mobile-tab calculate-form__mobile-tab_legal">
-                                        <p class="calculate-form__mobile-tab-label">Юридическим лицам</p>
+                                        <span class="calculate-form__mobile-tab-label">Юридическим лицам</span>
                                         <svg class="calculate-form__mobile-tab-arr" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M1 1L8 8L15 1" stroke="#293157" />
                                         </svg>
@@ -355,7 +408,7 @@
                                                     <input class="calculate-form__input-input" id="shower" name="shower" type="text" placeholder="шт">
                                                 </div>
                                                 <div class="calculate-form__inputs-input-container">
-                                                    <label class="calculate-form__input-label" for="shower">Количество постоянно проживающих</label>
+                                                    <label class="calculate-form__input-label" for="living">Количество постоянно проживающих</label>
                                                     <input class="calculate-form__input-input" id="living" name="living" type="text" placeholder="чел">
                                                 </div>
                                                 <div class="calculate-form__inputs-input-container">
@@ -371,6 +424,11 @@
                                                 Какое у вас количество приборов водоразбора могут быть включены одновременно
                                             </p>
                                             <textarea name="appliances" id="appliances" placeholder="(кран, душ, унитаз, стиральная машина, посудомоечная машина и тд)" class="calculate-form__message-textarea"></textarea>
+                                            <p class="calculate-form__message-title">
+                                                Контактная информация
+                                            </p>
+                                             <input class="calculate-form__input-input calculate-form__message-input" id="name" name="name" type="text" placeholder="Имя">
+                                            <input class="calculate-form__input-input calculate-form__message-input" id="phone" name="phone" type="text" placeholder="Номер телефона">
                                             <input type="submit" value="ОТПРАВИТЬ" class="calculate-form__send-btn calculate-form__send-btn_physical yellow-btn">
                                         </div>
                                     </div>
@@ -388,6 +446,9 @@
                                     </div>
                                 </form>
                                 <button class="calculate-form__cancel">Закрыть</button>
+                                <p class="calculate-form__content-error">
+                                	Произошла ошибка. Попробуйте ещё раз.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -534,7 +595,7 @@
                         <div class="feedback__slide card">
                             <div class="feedback__slide-text">
                                 <span class="feedback__slide-company">1ООО "Альянс"</span>
-                                <p class="feedback__slide-message">
+                                <p>
                                     Выражает искреннюю благодарность ООО «Водпром» за быструю и своевременную поставку и установку водоочистительной установки в 2017 году. <br /><br />
                                     Выражаем признательность за бесперебойность работы в 2017 году и индивидуальный подход. <br /><br />Выражаем уверенность в сохранении и укреплении сложившихся деловых отношениях, надеемся на долговременное и успешное сотрудничество.
                                 </p>
@@ -547,7 +608,7 @@
                         <div class="feedback__slide card">
                             <div class="feedback__slide-text">
                                 <span class="feedback__slide-company">2ООО "erewr"</span>
-                                <p class="feedback__slide-message">
+                                <p>
                                     Выражает искреннюю благодарность ООО «Водпром» за быструю и своевременную поставку и установку водоочистительной установки в 2017 году. Выражаем признательность за бесперебойность работы в 2017 году и индивидуальный подход. Выражаем уверенность в сохранении и укреплении сложившихся деловых отношениях, надеемся на долговременное и успешное сотрудничество.Выражаем уверенность в сохранении и укреплении сложившихся деловых отношениях, надеемся на долговременное и успешное сотрудничество.
                                 </p>
                                 <p class="feedback__slide-author">Директор ООО «Альянс» Попов А.А. Попов</p>
@@ -559,7 +620,7 @@
                         <div class="feedback__slide card">
                             <div class="feedback__slide-text">
                                 <span class="feedback__slide-company">3ООО "Альянс"</span>
-                                <p class="feedback__slide-message">
+                                <p>
                                     Выражает искреннюю благодарность ООО «Водпром» за быструю и своевременную поставку и установку водоочистительной установки в 2017 году. Выражаем признательность за бесперебойность работы в 2017 году и индивидуальный подход. Выражаем уверенность в сохранении и укреплении сложившихся деловых отношениях, надеемся на долговременное и успешное сотрудничество.
                                 </p>
                                 <p class="feedback__slide-author">Директор ООО «Альянс» Попов А.А. Попов</p>
@@ -571,7 +632,7 @@
                         <div class="feedback__slide card">
                             <div class="feedback__slide-text">
                                 <span class="feedback__slide-company">4 "Альянс"</span>
-                                <p class="feedback__slide-message">
+                                <p>
                                     Выражает искреннюю благодарность ООО «Водпром» за быструю и своевременную поставку и установку водоочистительной установки в 2017 году. Выражаем признательность за бесперебойность работы в 2017 году и индивидуальный подход. Выражаем уверенность в сохранении и укреплении сложившихся деловых отношениях, надеемся на долговременное и успешное сотрудничество.
                                 </p>
                                 <p class="feedback__slide-author">Директор ООО «Альянс» Попов А.А. Попов</p>
@@ -633,8 +694,8 @@
             </div>
             <div class="contacts__map" id="map"></div>
         </section>
-         <section class="footer">
-             <div class="wrapper footer-wrapper">
+        <section class="footer">
+            <div class="wrapper footer-wrapper">
                 <p class="footer__info">&copy; Общество с ограниченной ответственностью 2018-2019</p>
                 <a href="#" class="footer__policy">Пользовательское соглашение и&nbsp;политика конфиденциальности</a>
                 <p class="footer__asap">Разработка сайта —<br />
@@ -644,6 +705,7 @@
     </main>
     <script src="vendors/js/jquery-3.4.1.min.js"></script>
     <script src="vendors/js/slick.min.js"></script>
+    <script src="vendors/js/formValidate.min.js"></script>
     <script src="js/scripts.js"></script>
 </body>
 
