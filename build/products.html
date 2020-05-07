@@ -17,6 +17,24 @@
 </head>
 
 <body>
+    <a href="cart.html" class="success-popup popup">
+        <span class="popup__text">Товар добавлен в&nbsp;корзину</span>
+        <span class="popup__icon">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="28" cy="28" r="25.5" stroke="#FED361" stroke-width="5"></circle>
+                <path d="M18 29L25 36L40 21" stroke="#FED361" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </span>
+    </a>
+    <a href="cart.html" class="error-popup popup">
+        <span class="popup__text">Произошла ошибка</span>
+        <span class="popup__icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18.5" stroke="#EB5454" stroke-width="3"/>
+            <path d="M18.2025 20.9987L13.116 26.033C13.1158 26.0331 13.1157 26.0333 13.1155 26.0334C12.9971 26.1496 12.9036 26.2887 12.8408 26.4422C12.7782 26.5952 12.7474 26.7594 12.7502 26.9247C12.7502 26.9239 12.7502 26.9231 12.7502 26.9223L18.2025 20.9987ZM18.2025 20.9987L13.1151 15.9114C12.8924 15.6931 12.7619 15.3978 12.7503 15.0861L12.75 15.0769H12.7502C12.7502 14.725 12.89 14.3875 13.1388 14.1386C13.3877 13.8898 13.7252 13.75 14.0771 13.75H14.0802L14.0802 13.75C14.404 13.7541 14.7139 13.8848 14.9431 14.114L20 19.1707L25.0328 14.1381C25.1466 14.0178 25.2834 13.9214 25.4351 13.8547C25.5881 13.7875 25.753 13.7519 25.9201 13.75L25.9229 13.75C26.2748 13.75 26.6123 13.8898 26.8612 14.1386C27.1095 14.3869 27.2492 14.7235 27.2498 15.0745M18.2025 20.9987L14.9552 27.8731L19.9991 22.8293L25.0022 27.8843L25.0027 27.8848C25.1241 28.0067 25.2695 28.102 25.4297 28.1647C25.5883 28.2267 25.758 28.2555 25.9281 28.2491C26.2781 28.2478 26.6136 28.1081 26.8612 27.8605C27.11 27.6117 27.2498 27.2742 27.2498 26.9223H27.25L27.2497 26.913C27.2381 26.6014 27.1076 26.3061 26.885 26.0877L21.7975 21.0005L26.884 15.9662C26.8842 15.966 26.8844 15.9658 26.8846 15.9656C27.003 15.8495 27.0964 15.7104 27.1592 15.5569C27.2218 15.4039 27.2526 15.2398 27.2498 15.0745M27.2498 15.0745C27.2498 15.0753 27.2498 15.0761 27.2498 15.0769H26.9998L27.2498 15.0721C27.2498 15.0729 27.2498 15.0737 27.2498 15.0745Z" fill="#EB5454" stroke="#EB5454" stroke-width="0.5"/>
+            </svg>
+        </span>
+    </a>
     <main class="main">
         <section class="header short-header">
             <div class="wrapper header-wrapper">
@@ -148,10 +166,10 @@
                     <button class="short-header__back back-btn"><svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.938862 10.9393C0.353075 11.5251 0.353075 12.4749 0.938862 13.0607L10.4848 22.6066C11.0706 23.1924 12.0203 23.1924 12.6061 22.6066C13.1919 22.0208 13.1919 21.0711 12.6061 20.4853L4.12084 12L12.6061 3.51472C13.1919 2.92893 13.1919 1.97918 12.6061 1.3934C12.0203 0.80761 11.0706 0.80761 10.4848 1.3934L0.938862 10.9393ZM25.25 10.5L1.99952 10.5L1.99952 13.5L25.25 13.5L25.25 10.5Z" fill="#FED361" />
                         </svg></button>
-                        <div class="short-header__title-flex">
-                             <h1 class="short-header__title">Каталог товаров</h1>
-                              <a href="docs/Опросный лист для промышленных предприятий.doc" class="short-header__download-btn yellow-btn">Скачать прайс</a>
-                        </div>
+                    <div class="short-header__title-flex">
+                        <h1 class="short-header__title">Каталог товаров</h1>
+                        <a href="docs/Опросный лист для промышленных предприятий.doc" class="short-header__download-btn yellow-btn">Скачать прайс</a>
+                    </div>
                     <div class="short-header__tabs">
                         <button class="short-header__tab short-header__tab_active short-header__tab_industrial">Промышленные объекты</button>
                         <button class="short-header__tab short-header__tab_private">Для дома</button>
@@ -194,7 +212,7 @@
                         <span class="filters__filter-icon" style="background-image: url(img/icons/дисковые_фильтры_с_ручной_промывкой.png);"></span>
                         <p class="filters__filter-title">Дисковые фильтры с ручной промывкой(AZUD)</p>
                     </button>
-                     <a href="docs/Опросный лист для промышленных предприятий.doc" class="products__download-btn yellow-btn">Скачать опросный лист</a>
+                    <a href="docs/Опросный лист для промышленных предприятий.doc" class="products__download-btn yellow-btn">Скачать опросный лист</a>
                 </aside>
                 <div class="products-container">
                     <div class="products__controls">
@@ -361,7 +379,7 @@
                                 </div>
                             </a>
                         </div>
-                         <button class="products__load-btn projects__load-btn_private yellow-btn">Смотреть больше</button>
+                        <button class="products__load-btn projects__load-btn_private yellow-btn">Смотреть больше</button>
                         <div class="products__pagination products__pagination_private">
                             <button class="products__pagination-prev">
                                 <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
