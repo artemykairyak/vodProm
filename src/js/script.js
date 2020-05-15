@@ -47,6 +47,7 @@ $(document).ready(function() {
 
     $('.calculate__btn').on('click', function(e) {
         e.preventDefault();
+        movingActive('.calculate-form__header', 'calculate-form__tab_active', '.calculate-form__line');
         if ($('.calculate').hasClass('calculate_nonabsolute')) {
             $('.calculate').addClass('calculate_active-form');
             $('html, body').animate({ scrollTop: $('.calculate__form').offset().top }, 500);
@@ -170,11 +171,25 @@ $(document).ready(function() {
         }
 
         if ($(this).hasClass('short-header__tab_industrial')) {
-            !!$('.projects-tab-content_industrial').length ? $('.projects-tab-content_industrial').fadeIn() : $('.products-tab-content_industrial').fadeIn();
+            if($('.projects-tab-content_industrial').length > 0) {
+                $('.projects-tab-content_industrial').fadeIn();
+                 
+            } else {
+                $('.filters__filter_private').hide();
+                $('.filters__filter_industrial').show();
+                $('.products-tab-content_industrial').fadeIn();
+            }
         }
 
         if ($(this).hasClass('short-header__tab_private')) {
-            !!$('.projects-tab-content_private').length ? $('.projects-tab-content_private').fadeIn() : $('.products-tab-content_private').fadeIn();
+            if($('.projects-tab-content_private').length > 0) {
+                
+                $('.projects-tab-content_private').fadeIn()
+            }  else {
+                $('.filters__filter_industrial').hide();
+                $('.filters__filter_private').show();
+                $('.products-tab-content_private').fadeIn();
+            }
         }
 
         if ($(this).hasClass('short-header__tab_goods')) {
@@ -198,6 +213,13 @@ $(document).ready(function() {
 
     if ($(window).width() < 640 && $('.short-header__tabs').length) {
         initShortHeaderSlider();
+    }
+    
+    function changeCategory(parent, child) {
+        let parentHeight = parent.height();
+        parent.css('height', parentHeight);
+        let children = child.fadeOut();
+        setTimeout(() => {children.remove(); parent.css('height', 'auto')}, 300)
     }
 
     function initShortHeaderSlider() {
@@ -326,6 +348,38 @@ $(document).ready(function() {
         });
     }
 
+    function movingActive(parent, activeElem, line) {
+
+        let item = $(parent).children('button:not(.calculate-form__back-btn)');
+
+        function activeChange() {
+            let offsetBody = $(parent).offset().left,
+                widthItem = $(item).filter(`.${activeElem}`).width(),
+                offsetItem = $(item).filter(`.${activeElem}`).offset().left - offsetBody;
+            if (offsetItem < 0) {
+                offsetItem = 0
+            } else {
+                $(line).css({
+                    "width": widthItem,
+                    "left": offsetItem
+                });
+
+            }
+        }
+        $(item).on('click', function () {
+                activeChange();
+        });
+        setTimeout(function () {
+            activeChange();
+            $(line).css({
+                'display': 'block'
+            })
+        }, 200);
+    }
+
+    if($('.short-header__tabs').length > 0) {
+        movingActive('.short-header__tabs', 'short-header__tab_active', '.short-header__line');
+    }
 
     // INDEX PAGE
 
@@ -489,34 +543,69 @@ $(document).ready(function() {
 
     if ($('.projects-list').length) {
         let offsets = {
-            industrialOffset: 3
+            industrialOffset: 4,
+            privateOffset: 4
         }
         $('.projects__load-btn_industrial').on('click', function() {
             $.ajax({
-                url: 'assets/components/ajax-loading/AJAX.php',
+                url: 'http://vodprom.asap-lp.ru/ajax-projects.html',
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    offset: offsets.industrialOffset
+                    offset: offsets.industrialOffset,
+                    sortdir_tv: 'desc'
                 },
                 success: function(data) {
                     if (data.success) {
                         if (data.html) {
+                            let lastCard = $('.projects-tab-content_industrial .projects-list__card:last');
+                            let offset = lastCard.offset().top + lastCard.outerHeight();
+                            
                             $('.projects-tab-content_industrial').find('.projects-list__table').append(data.html);
-                            offsets.industrialOffset += 3;
-                        } else {
-                            $('.projects__load-btn_industrial').hide()
+                            offsets.industrialOffset += 4;
+                            if($('.projects-tab-content_industrial .projects-list__card').length === data.count) {
+                                 $('.projects__load-btn_industrial').hide()
+                            }
+                            truncText('.projects-list__card-text', 150);
+
+                            $('html, body').animate({ scrollTop: offset }, 800);
                         }
                     }
+                },
+                error: function(error) {
+                    console.log(error)
                 }
             })
         });
-        // $('.projects__load-btn_industrial').on('click', function() {
-        //     let lastCard = $(this).closest('.projects-list').find('.projects-list__table').find('.projects-list__card:last')
-        //     let offset = lastCard.offset().top + lastCard.outerHeight()
-        //     $(this).closest('.projects-list').find('.projects-list__table').append(cards);
-        //     $('html, body').animate({ scrollTop: offset }, 800);
-        // })
+        $('.projects__load-btn_private').on('click', function() {
+            $.ajax({
+                url: 'http://vodprom.asap-lp.ru/ajax-private-house.html',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    offset: offsets.privateOffset,
+                    sortdir_tv: 'desc'
+                },
+                success: function(data) {
+                    if (data.success) {
+                        if (data.html) {
+                            let lastCard = $('.projects-tab-content_private .projects-list__card:last');
+                            let offset = lastCard.offset().top + lastCard.outerHeight();
+                            $('.projects-tab-content_private').find('.projects-list__table').append(data.html);
+                            offsets.privateOffset += 4;
+                            if($('.projects-tab-content_private .projects-list__card').length === data.count) {
+                                 $('.projects__load-btn_private').hide()
+                            }
+                            truncText('.projects-list__card-text', 150);
+                            $('html, body').animate({ scrollTop: offset }, 800);    
+                        }
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            })
+        })
     }
 
     // PROJECT PAGE
@@ -587,9 +676,45 @@ $(document).ready(function() {
         $(this).addClass('products__view-btn_active');
 
         if ($(this).hasClass('products__view-btn_list')) {
-            $('.products__table').addClass('products__table_list');
+            if($('.short-header__tab_industrial').hasClass('short-header__tab_active')) {
+                $('.products__table_industrial').css('height', $('.products__table_industrial').height());
+                $('.products__table_industrial .products__card').fadeOut(200, function() {
+                    $('.products__table').addClass('products__table_list');
+                    setTimeout(() => {
+                        $('.products__table_industrial .products__card').fadeIn(200);
+                        $('.products__table_industrial').css('height', 'auto');
+                    }, 100)    
+                })
+            } else {
+                $('.products__table_private .products__card').fadeOut(200, function() {
+                    $('.products__table_private').css('height', $('.products__table_private').height());
+                    $('.products__table').addClass('products__table_list');
+                    setTimeout(() => {
+                        $('.products__table_private .products__card').fadeIn(200);
+                        $('.products__table_private').css('height', 'auto');
+                    }, 100)    
+                })
+            }
         } else {
-            $('.products__table').removeClass('products__table_list');
+            if($('.short-header__tab_industrial').hasClass('short-header__tab_active')) {
+                $('.products__table_industrial').css('height', $('.products__table_industrial').height());
+                $('.products__table_industrial .products__card').fadeOut(200, function() {
+                    $('.products__table').removeClass('products__table_list');
+                    setTimeout(() => {
+                        $('.products__table_industrial .products__card').fadeIn(200)
+                        $('.products__table_industrial').css('height', 'auto');
+                    }, 100)    
+                })
+            } else {
+                $('.products__table_private .products__card').fadeOut(200, function() {
+                    $('.products__table_private').css('height', $('.products__table_private').height());
+                    $('.products__table').removeClass('products__table_list');
+                    setTimeout(() => {
+                        $('.products__table_private .products__card').fadeIn(200)
+                        $('.products__table_private').css('height', 'auto');
+                    }, 100)    
+                })
+            }
         }
     });
 
@@ -639,6 +764,141 @@ $(document).ready(function() {
     }
 
     // ARTICLES PAGE
+    if ($('.articles-list__load-btn').length > 0) {
+         let categoryId = $('.articles-list__category_active').attr('data-id');
+         let sortDir = $('.articles-list__sorting-tab_active').attr('data-sort');
+         let articlesOffset = 6;
+         
+        $('.articles-list__load-btn').on('click', function() {
+            $.ajax({
+                url: 'http://vodprom.asap-lp.ru/ajax-articles.html',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    offset: articlesOffset,
+                    sortdir_pub: sortDir,
+                    category_id: categoryId
+                },
+                success: function(data) {
+                    if (data.success) {
+                        if (data.html) {
+                            let lastArticle = $('.articles-list__article:last');
+                            let offset = lastArticle.offset().top + lastArticle.outerHeight();
+                            $('.articles-list__table').append(data.html);
+                            articlesOffset += 6;
+                            if($('.articles-list__article').length === data.count) {
+                                $('.articles-list__load-btn').hide()
+                            }
+                            truncText('.articles-list__article-desc', 115);
+                            $('html, body').animate({ scrollTop: offset }, 800);  
+                        }
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            })
+        });
+        
+        $('.articles-list__sorting-tab').on('click', function() {
+            if (!$(this).hasClass('articles-list__sorting-tab_initial')) {
+                let activeTab = $(this).detach();
+                $('.articles-list__sorting-tab_initial').remove();
+                $('.articles-list__sorting').prepend(activeTab);
+                $(this).addClass('articles-list__sorting-tab_active');
+                $(this).siblings().removeClass('articles-list__sorting-tab_active');
+                sortDir = $('.articles-list__sorting-tab_active').attr('data-sort');
+            }
+            
+            changeCategory($('.articles-list__table'), $('.articles-list__article'));
+           
+            
+            articlesOffset = 0;
+        
+         $.ajax({
+                url: 'http://vodprom.asap-lp.ru/ajax-articles.html',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    offset: articlesOffset,
+                    sortdir_pub: sortDir,
+                    category_id: categoryId
+                },
+                success: function(data) {
+                    if (data.success) {
+                        if (data.html) {
+                            $('.articles-list__table').append(data.html);
+                            truncText('.articles-list__article-desc', 115);
+                            articlesOffset += 6;
+                            setTimeout(() => {
+                               if($('.articles-list__article').length === data.count) {
+                                 $('.articles-list__load-btn').hide()
+                                } else {
+                                $('.articles-list__load-btn').show() 
+                                }
+                            }, 300);
+                        }
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            })
+        });
+        
+        $('.articles-list__category, .articles-list__filter-tab').on('click', function() {
+            changeCategory($('.articles-list__table'), $('.articles-list__article'));
+            
+            articlesOffset = 0;
+            
+            if($(this).hasClass('articles-list__category')) {
+                $(this).siblings().removeClass('articles-list__category_active');
+                $(this).addClass('articles-list__category_active');
+                categoryId = $('.articles-list__category_active').attr('data-id');
+            }
+            
+            if($(this).hasClass('articles-list__filter-tab')) {
+                if (!$(this).hasClass('.articles-list__filter-tab_initial')) {
+                    let activeTab = $(this).detach();
+                    $('.articles-list__filter-tab_initial').remove();
+                    $('.articles-list__filter').prepend(activeTab);
+                    $(this).addClass('articles-list__filter-tab_active');
+                    $(this).siblings().removeClass('articles-list__filter-tab_active');
+                     categoryId = $('.articles-list__filter-tab_active').attr('data-id');
+                }
+            }
+        
+         $.ajax({
+                url: 'http://vodprom.asap-lp.ru/ajax-articles.html',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    offset: articlesOffset,
+                    sortdir_pub: sortDir,
+                    category_id: categoryId
+                },
+                success: function(data) {
+                    if (data.success) {
+                        if (data.html) {
+                            $('.articles-list__table').append(data.html);
+                            truncText('.articles-list__article-desc', 115);
+                            articlesOffset += 6;
+                            setTimeout(() => {
+                               if($('.articles-list__article').length === data.count) {
+                                 $('.articles-list__load-btn').hide()
+                                } else {
+                                $('.articles-list__load-btn').show() 
+                                }
+                            }, 300);
+                        }
+                    }
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            })
+        });
+    }
 
     if ($('.articles-list').length) {
         if ($(window).width() < 640) {
@@ -654,29 +914,9 @@ $(document).ready(function() {
             $('.articles-list__filter').removeClass('articles-list__filter_active');
         });
 
-        $('.articles-list__sorting-tab').on('click', function() {
-            if (!$(this).hasClass('.articles-list__sorting-tab_initial')) {
-                let activeTab = $(this).detach();
-                $('.articles-list__sorting-tab_initial').remove();
-                $('.articles-list__sorting').prepend(activeTab);
-                $(this).addClass('articles-list__sorting-tab_active');
-                $(this).siblings().removeClass('articles-list__sorting-tab_active');
-            }
-        });
-
         $('.articles-list__filter').on('click', function() {
             $(this).toggleClass('articles-list__filter_active');
             $('.articles-list__sorting').removeClass('articles-list__sorting_active');
-        });
-
-        $('.articles-list__filter-tab').on('click', function() {
-            if (!$(this).hasClass('.articles-list__filter-tab_initial')) {
-                let activeTab = $(this).detach();
-                $('.articles-list__filter-tab_initial').remove();
-                $('.articles-list__filter').prepend(activeTab);
-                $(this).addClass('articles-list__filter-tab_active');
-                $(this).siblings().removeClass('articles-list__filter-tab_active');
-            }
         });
     }
 
@@ -734,6 +974,10 @@ $(document).ready(function() {
 
     // PRODUCT PAGE
 
+    if($('.product-info__full-tabs').length > 0) {
+        movingActive('.product-info__full-tabs', 'product-info__full-tab_active', '.product-info__line');
+    }
+
     if ($('.more-products__slider').length) {
         $('.breadcrumb-item.active').prev().remove();
         $('.more-products__slider').slick({
@@ -772,7 +1016,9 @@ $(document).ready(function() {
             $(this).parent().find('.product-info__full-tab').siblings().removeClass('product-info__full-tab_active');
             $(this).addClass('product-info__full-tab_active');
             $('.product-info__full-tab-content').removeClass('product-info__full-tab-content_active');
-
+            setTimeout(() => {
+                movingActive('.product-info__full-tabs', 'product-info__full-tab_active', '.product-info__line');
+            }, 300);
             if ($(this).hasClass('product-info__full-tab_features')) {
                 $('.product-info__full-tab-content_features').addClass('product-info__full-tab-content_active');
             }
