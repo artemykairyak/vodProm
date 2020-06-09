@@ -218,8 +218,10 @@ $(document).ready(function() {
         let parentHeight = parent.height();
         parent.css('height', parentHeight);
         let children = child.fadeOut();
-        setTimeout(() => { children.remove();
-            parent.css('height', 'auto') }, 300)
+        setTimeout(() => {
+            children.remove();
+            parent.css('height', 'auto')
+        }, 300)
     }
 
     function initShortHeaderSlider() {
@@ -670,13 +672,7 @@ $(document).ready(function() {
         });
     }
 
-
-
-
-
     function convertQueryParamsToObject(queryString) {
-        console.log(queryString)
-
         var params = queryString.substr(1).split('&');
         var paramsObj = {},
             i, param;
@@ -695,8 +691,6 @@ $(document).ready(function() {
     }
 
     function createHash(offset, sortBy, sortDir, categoryId, parentId, type, pageClass) {
-        console.log('offset', offset)
-        // console.log(offset, sortBy, sortDir, categoryId, parentId, type='pdoPage', pageClass);
         let offsetValue = offset || 0,
             sortByValue = sortBy || '',
             sortDirValue = sortDir || '',
@@ -704,11 +698,9 @@ $(document).ready(function() {
             parentIdValue = parentId || '',
             typeValue = type,
             pageClassValue = pageClass;
-        console.log('offsetValue', offsetValue)
         let queryString = `offset=${offsetValue}&sort_by=${sortByValue}&sort_dir=${sortDirValue}&category_id=${categoryIdValue}&parent_id=${parentIdValue}&type=${typeValue}&class=${pageClassValue}`;
         window.location.hash = '';
         window.location.hash = queryString;
-        console.log(queryString)
     }
 
     // PRODUCTS PAGE
@@ -728,24 +720,21 @@ $(document).ready(function() {
             curPage = 1;
 
             $('.filters__filter').removeClass('filters__filter_active');
+            $('.products__filter-tab').removeClass('products__filter-tab_active')
             if ($('.short-header__tab_active').attr('data-parent') == 61) {
                 pageClass = 'products__pagination_industrial';
                 sendAJAX();
+                $('.products__filter-tab_private').hide();
+                $('.products__filter-tab_industrial').show();
                 changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
             } else {
                 pageClass = 'products__pagination_private';
                 sendAJAX();
+                $('.products__filter-tab_private').show();
+                $('.products__filter-tab_industrial').hide();
                 changeCategory($('.products__table_private'), $('.products__table_private .products__card'));
             }
         });
-
-        $('.products__load-btn').on('click', function() {
-            if ($(this).hasClass('projects__load-btn_industrial')) {
-                pageClass = 'products__pagination_industrial';
-                sendAJAX(null, true);
-                // changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
-            }
-        })
 
         $('.filters__filter').on('click', function() {
             $(this).addClass('filters__filter_active');
@@ -765,18 +754,6 @@ $(document).ready(function() {
         });
 
         $('.products__filter-tab').on('click', function() {
-            categoryId = $('.products__filter-tab_active').attr('data-category');
-            curPage = 1;
-            if ($('.short-header__tab_active').attr('data-parent') == 61) {
-                pageClass = 'products__pagination_industrial';
-                sendAJAX();
-                changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
-            } else {
-                pageClass = 'products__pagination_private';
-                sendAJAX();
-                // changeCategory($('.products__table_private'), $('.products__table_private .products__card'));
-            }
-
             if (!$(this).hasClass('.products__filter-tab_initial')) {
                 let activeTab = $(this).detach();
                 $('.products__filter-tab_initial').remove();
@@ -784,35 +761,189 @@ $(document).ready(function() {
                 $(this).addClass('products__filter-tab_active');
                 $(this).siblings().removeClass('products__filter-tab_active');
             }
-        });
 
-        function readFromHash() {
-            let url = new URL(window.location.href);
-            let params = convertQueryParamsToObject(url.hash);
-            if (params) {
-                sendAJAX(params);
+            curPage = 1;
+            if ($('.short-header__tab_active').attr('data-parent') == 61) {
+                pageClass = 'products__pagination_industrial';
+                // sendMobileAJAX();
+                categoryId = $('.products__filter-tab_active').attr('data-category');
+                sendAJAX();
+                changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
+            } else {
+                pageClass = 'products__pagination_private';
+                categoryId = $('.products__filter-tab_active').attr('data-category');
+                // sendMobileAJAX();
+                sendAJAX();
+                changeCategory($('.products__table_private'), $('.products__table_private .products__card'));
             }
 
+
+        });
+
+        let firstLoad = false;
+
+        function readFromHash() {
+            firstLoad = true;
+            let url = new URL(window.location.href);
+            let params = convertQueryParamsToObject(url.hash);
+            sortDir = params.sort_dir;
+            sortBy = params.sort_by;
+            selectActiveSort(sortBy, sortDir);
+            selectActiveCategory(params.category_id);
+            sendAJAX(params);
 
         }
 
-        readFromHash();
+        if (window.location.hash) {
+            readFromHash();
+        }
+
+        function selectActiveSort(sort_by, sort_dir) {
+            if (sort_by && sort_dir) {
+                let activeTab = $(`.products__sorting-tab[data-sortby = ${sort_by}][data-sortdir = ${sort_dir}]`).detach();
+                $('.products__sorting-tab_initial').remove();
+                $('.products__sorting').prepend(activeTab);
+                $(activeTab).addClass('products__sorting-tab_active');
+                $(activeTab).siblings().removeClass('products__sorting-tab_active');
+            }
+        }
+
+        function selectActiveCategory(category_id) {
+            if (category_id) {
+                if ($(window).width() > 860) {
+                    let desktopActiveCategory = $(`.filters__filter[data-category = ${category_id}]`);
+                    $(desktopActiveCategory).addClass('filters__filter_active');
+                    $(desktopActiveCategory).siblings().removeClass('filters__filter_active');
+                } else {
+                    let mobileActiveCategory = $(`.products__filter-tab[data-category = ${category_id}]`).detach();
+                    $('.products__filter-tab_initial').remove();
+                    $('.products__filter').prepend(mobileActiveCategory);
+                    $(mobileActiveCategory).addClass('products__filter-tab_active');
+                    $(mobileActiveCategory).siblings().removeClass('products__filter-tab_active');
+                }
+            }
+        }
+
+        $('.products__load-btn').on('click', function() {
+            if ($(this).hasClass('projects__load-btn_industrial')) {
+                pageClass = 'products__pagination_industrial';
+
+            } else {
+                pageClass = 'products__pagination_private';
+            }
+            curPage = curPage + 1;
+            sendMobileAJAX();
+        })
+
+        // function sendMobileAJAX(hashParams) {
+        //     let data = {};
+        //     if (hashParams) {
+        //         data = hashParams;
+        //         categoryId = hashParams.category_id;
+
+        //     } else {
+        //         createHash(offsets.industrialOffset * (curPage - 1),
+        //             sortBy, sortDir, categoryId, $('.short-header__tab_active').attr('data-parent'),
+        //             'pdoPage', pageClass);
+        //         data = {
+        //             offset: offsets.industrialOffset * (curPage - 1),
+        //             sort_by: sortBy,
+        //             sort_dir: sortDir,
+        //             category_id: categoryId,
+        //             parent_id: $('.short-header__tab_active').attr('data-parent'),
+        //             type: 'pdoPage',
+        //             'class': pageClass
+        //         }
+        //     }
+        //     $.ajax({
+        //         url: 'http://vodprom.asap-lp.ru/ajax-products.html',
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         data: data,
+        //         success: function(data) {
+        //             if (data.success) {
+        //                 if (data.html) {
+        //                     // changeNav(data.nav);
+        //                     if ($('.short-header__tab_active').attr('data-parent') == 61) {
+        //                         if (firstLoad) {
+        //                             $('.products__table_industrial').html(data.html);
+        //                         } else {
+        //                             $('.products__table_industrial').append(data.html);
+        //                         }
+
+        //                         console.log($('.products__table_industrial .products__card').length, data.count);
+        //                         console.log($('.products__table_industrial .products__card'))
+        //                         if ($('.products__table_industrial .products__card').length === data.count) {
+        //                             $('.projects__load-btn_industrial').hide()
+        //                         } else {
+        //                             $('.projects__load-btn_industrial').show();
+        //                         }
+        //                     } else {
+        //                         $('.products__table_private').append(data.html);
+        //                         if ($('.products__table_private .products__card').length === data.count) {
+        //                             $('.projects__load-btn_private').hide()
+        //                         } else {
+        //                             $('.projects__load-btn_private').show();
+        //                         }
+        //                     }
+
+
+
+
+        //                     // if (!!hashParams && hashParams.parent_id == 61) {
+        //                     //     $('.short-header__tab').removeClass('short-header__tab_active');
+        //                     //     $('.short-header__tab_industrial').addClass('short-header__tab_active');
+        //                     //     movingActive('.short-header__tabs', 'short-header__tab_active', '.short-header__line');
+        //                     //     if (!mobile) {
+        //                     //         changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
+        //                     //         $('.products__table_industrial').append(data.html);
+        //                     //         if (hashParams.offset > 0) {
+        //                     //             changeNav(data.nav, (hashParams.offset / 6) + 1);
+        //                     //         }
+        //                     //     } else {
+        //                     //         console.log('OFFSET', offsets)
+        //                     //         let lastProduct = $('.products__table_industrial .products__card:last');
+        //                     //         let scrollOffset = lastProduct.offset().top + lastProduct.outerHeight();
+        //                     //         $('.articles-list__table').append(data.html);
+        //                     //         if ($('.products__card').length === data.count) {
+        //                     //             $('.articles-list__load-btn').hide()
+        //                     //         }
+        //                     //         $('.products__table_industrial').append(data.html);
+        //                     //         $('html, body').animate({ scrollTop: scrollOffset }, 800);
+        //                     //     }
+        //                     // }
+
+        //                     // if (!!hashParams && hashParams.parent_id == 63) {
+        //                     //     $('.short-header__tab').removeClass('short-header__tab_active');
+        //                     //     $('.short-header__tab_private').addClass('short-header__tab_active');
+        //                     //     movingActive('.short-header__tabs', 'short-header__tab_active', '.short-header__line');
+        //                     //     changeCategory($('.products__table_private'), $('.products__table_private .products__card'));
+        //                     //     $('.products__table_private').append(data.html);
+        //                     //     $('.products-tab-content_industrial').removeClass('products-tab-content_active');
+        //                     //     $('.products-tab-content_private').addClass('products-tab-content_active');
+        //                     //     if (hashParams.offset > 0) {
+        //                     //         changeNav(data.nav, (hashParams.offset / 6) + 1);
+        //                     //     }
+
+        //                     //     $('.filters__filter_industrial').hide();
+        //                     //     $('.filters__filter_private').show();
+        //                     // }
+        //                 }
+        //             }
+        //         },
+        //         error: function(error) {
+        //             console.log(error)
+        //         }
+        //     });
+        // }
 
         function sendAJAX(hashParams) {
-            let mobile = false;
-            if ($(window).width() < 470) {
-                mobile = true;
-            }
-            console.log('mobile', mobile)
             let data = {};
+
             if (hashParams) {
                 data = hashParams;
-                console.log('hash'.hashParams)
+                categoryId = hashParams.category_id;
             } else {
-                console.log('nohash')
-                createHash(offsets.industrialOffset * (curPage - 1),
-                    sortBy, sortDir, categoryId, $('.short-header__tab_active').attr('data-parent'),
-                    'pdoPage', pageClass);
                 data = {
                     offset: offsets.industrialOffset * (curPage - 1),
                     sort_by: sortBy,
@@ -823,14 +954,15 @@ $(document).ready(function() {
                     'class': pageClass
                 }
             }
-
+            createHash(offsets.industrialOffset * (curPage - 1),
+                sortBy, sortDir, categoryId, $('.short-header__tab_active').attr('data-parent'),
+                'pdoPage', pageClass);
             $.ajax({
                 url: 'http://vodprom.asap-lp.ru/ajax-products.html',
                 type: 'GET',
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    console.log(data)
                     if (data.success) {
                         if (data.html) {
                             changeNav(data.nav);
@@ -844,25 +976,12 @@ $(document).ready(function() {
                                 $('.short-header__tab').removeClass('short-header__tab_active');
                                 $('.short-header__tab_industrial').addClass('short-header__tab_active');
                                 movingActive('.short-header__tabs', 'short-header__tab_active', '.short-header__line');
-                                if (!mobile) {
-                                    changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
-                                    $('.products__table_industrial').append(data.html);
-                                    if (hashParams.offset > 0) {
-                                        changeNav(data.nav, (hashParams.offset / 6) + 1);
-                                    }
-                                } else {
-                                    let lastProduct = $('.products__table_industrial .products__card:last');
-                                    let scrollOffset = lastProduct.offset().top + lastProduct.outerHeight();
-                                    $('.articles-list__table').append(data.html);
-                                    if ($('.products__card').length === data.count) {
-                                        $('.articles-list__load-btn').hide()
-                                    }
-                                    $('.products__table_industrial').append(data.html);
-                                    $('html, body').animate({ scrollTop: scrollOffset }, 800);
 
-
+                                changeCategory($('.products__table_industrial'), $('.products__table_industrial .products__card'));
+                                $('.products__table_industrial').append(data.html);
+                                if (hashParams.offset > 0) {
+                                    changeNav(data.nav, (hashParams.offset / 6) + 1);
                                 }
-
                             }
 
                             if (!!hashParams && hashParams.parent_id == 63) {
@@ -880,12 +999,6 @@ $(document).ready(function() {
                                 $('.filters__filter_industrial').hide();
                                 $('.filters__filter_private').show();
                             }
-
-
-
-
-
-
                         }
                     }
                 },
@@ -911,8 +1024,12 @@ $(document).ready(function() {
         }
 
         $('.products-tab-content').on('click', function(e) {
-            if ($(e.target).hasClass('products__pagination-page')) {
-                curPage = $(e.target).text();
+            if ($(e.target).hasClass('products__pagination-page') ||
+                $(e.target).hasClass('products__pagination-prev') ||
+                $(e.target).parent().hasClass('products__pagination-next') ||
+                $(e.target).parent().hasClass('products__pagination-prev') ||
+                $(e.target).hasClass('products__pagination-next')) {
+                curPage = $(e.target).attr('data-page');
                 if ($('.short-header__tab_active').attr('data-parent') == 61) {
                     pageClass = 'products__pagination_industrial';
                     sendAJAX();
@@ -999,7 +1116,7 @@ $(document).ready(function() {
         }
     });
 
-    if (('.products__sorting').length) {
+    if ($('.products__sorting').length) {
         $('.products__sorting').on('click', function() {
             $(this).toggleClass('products__sorting_active');
             $('.products__filter').removeClass('products__filter_active');
@@ -1027,7 +1144,6 @@ $(document).ready(function() {
 
         $('.products__card').on('click', function(e) {
             if ($(e.target).hasClass('products__card-order-btn')) {
-                console.log(1)
                 e.stopPropagation();
                 return;
             }
@@ -1433,9 +1549,8 @@ $(document).ready(function() {
     if ($('.cart').length) {
         if ($('.cart').find('.success-order').length > 0 ||
             $('.cart').find('.alert-warning').length > 0) {
-
             $('.make-order').hide();
-            if ($(window).height() > 670) {
+            if ($(window).height() > 550) {
                 $('.footer').css({ 'position': 'fixed', 'bottom': '0', 'left': '0' });
             }
         } else {
@@ -1597,11 +1712,6 @@ $(document).ready(function() {
 
             myMap.geoObjects.add(myPlacemark);
             myMap.container.fitToViewport();
-
-            //     myMap.balloon.open([51.530897894033940,46.000697894033940], "Астраханская улица, 43к2", {
-            //     // Опция: не показываем кнопку закрытия.
-            //     closeButton: false
-            // });
         });
     };
 

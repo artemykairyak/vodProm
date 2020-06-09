@@ -445,6 +445,7 @@ main {
   height: 60px;
   transition: all .4s ease;
   border: 1px solid #FED361;
+  box-shadow: 0 4px 10px 5px rgba(0, 0, 0, 0.07);
 }
 
 .header__menu_hidden {
@@ -726,6 +727,8 @@ main {
   display: none;
   opacity: 1;
   transition: all .2s ease;
+  border: none;
+  border-radius: 0;
 }
 
 .header__burger span {
@@ -3539,6 +3542,10 @@ main {
 .articles-list__load-btn {
   height: 50px;
   width: 80%;
+  display: none;
+}
+
+.products__filter-tab_private {
   display: none;
 }
 
@@ -7610,16 +7617,12 @@ main {
   /* PRODUCTS MEDIA */
 
   .products__load-btn {
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
+    /*display: flex;*/
     margin: 0 auto;
   }
 
   .products__pagination {
-    display: none;
+    /*display: none;*/
   }
 
   .products-content {
