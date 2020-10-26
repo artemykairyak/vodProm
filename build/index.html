@@ -244,7 +244,7 @@
                         </a>
                     </div>
                 </div>
-                <canvas class="header__model"></canvas>
+                <div class="header__model" style="background-image: url(img/model.png); "></div>
             </div>
         </section>
         <section class="services">
@@ -428,7 +428,7 @@
                                             <p class="calculate-form__message-title">
                                                 Контактная информация
                                             </p>
-                                             <input class="calculate-form__input-input calculate-form__message-input" id="name" name="name" type="text" placeholder="Имя">
+                                            <input class="calculate-form__input-input calculate-form__message-input" id="name" name="name" type="text" placeholder="Имя">
                                             <input class="calculate-form__input-input calculate-form__message-input" id="phone" name="phone" type="text" placeholder="Номер телефона">
                                             <input type="submit" value="ОТПРАВИТЬ" class="calculate-form__send-btn calculate-form__send-btn_physical yellow-btn">
                                         </div>
@@ -448,7 +448,7 @@
                                 </form>
                                 <button class="calculate-form__cancel">Закрыть</button>
                                 <p class="calculate-form__content-error">
-                                	Произошла ошибка. Попробуйте ещё раз.
+                                    Произошла ошибка. Попробуйте ещё раз.
                                 </p>
                             </div>
                         </div>
@@ -651,11 +651,17 @@
                 <div class="contacts__content">
                     <h2 class="contacts__title section-title">Контакты</h2>
                     <div class="contacts__container">
-                        <p class="contacts__address">Саратов, ул. Астраханская д. 43, корпус 2, офис 208</p>
-                        <p class="contacts__contacts">
+                        <div class="contacts_saratov">
+                            <p class="contacts__address">Саратов, ул. Астраханская д. 43, корпус 2, офис 208</p>
                             <a href="tel:88452509331" class="contacts__phone">8 (8452) 509 331</a>
                             <a href="mailto:vodprom@mail.ru" class="contacts__email">vodprom@mail.ru</a>
-                        </p>
+                        </div>
+                        <div class="contacts_moscow">
+                            <p class="contacts__address">г. Москва — дополнительный офис</p>
+                            <a href="tel:88452509331" class="contacts__phone">8 (499) 390 30 49</a>
+                            <a href="tel:88452509331" class="contacts__phone">8 (499) 490 53 90</a>
+                            <a href="mailto:vodprom@mail.ru" class="contacts__email">vodprommsk@gmail.com</a>
+                        </div>
                     </div>
                     <div class="contacts__soc">
                         <a href="#" class="contacts__soc-link contacts__soc-link_viber">

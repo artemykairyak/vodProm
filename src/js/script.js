@@ -1427,36 +1427,17 @@ $(document).ready(function() {
 
     // ABOUT PAGE
 
-    if ($('.about__members-slider').length) {
-        $('.about__members-slider').on('init', function(event, slick) {
-            $('.about__members__nav-total').text('0' + slick.slideCount);
-        });
-
+    if ($('.about__info').length) {
         $('.docs__license-slider a').simpleLightbox({});
 
         if ($(window).width() < 860) {
             aboutPageMobileRebase();
         }
 
-        $('.about__members-slider').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: false,
-            draggable: false,
-            arrows: true,
-            prevArrow: $('.about__members__nav-arr_left'),
-            nextArrow: $('.about__members__nav-arr_right'),
-            responsive: [{
-                breakpoint: 860,
-                settings: {
-                    draggable: true,
-                }
-            }, ]
-        });
-
-        $('.about__members-slider').on('afterChange', function(event, slick, currentSlide, nextSlide) {
-            $('.about__members__nav-cur').text(`0${currentSlide + 1}`);
-        });
+        if ($(window).width() <= 640) {
+           let aboutPic = $('.about__pic').detach();
+           $('.about__text-title').after(aboutPic);
+        }
 
         $('.docs__license-slider').slick({
             slidesToShow: 5,
