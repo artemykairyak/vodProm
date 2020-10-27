@@ -947,7 +947,7 @@ main {
 
     &__nav {
         position: absolute;
-        bottom: 0;
+        bottom: 30px;
         right: 0;
 
         &-arr {
@@ -1053,7 +1053,6 @@ main {
         display: -o-flex;
         display: flex;
         align-items: center;
-        height: 45vh;
         width: 100%;
     }
 
@@ -1081,7 +1080,7 @@ main {
 
     &__video {
         width: 60%;
-        height: 100%;
+        height: 400px;
         position: relative;
         border-radius: 12px;
         cursor: pointer;
@@ -5163,7 +5162,6 @@ main {
     }
 
     .objects__nav,
-    .services__nav,
     .feedback__nav {
         right: 3%;
     }
@@ -5178,7 +5176,6 @@ main {
 
     .articles__slider .slick-list {
         margin: 0 0 0 0px;
-
     }
 
     .articles__content {
@@ -5313,6 +5310,10 @@ main {
 }
 
 @media (max-width: 1280px) {
+	 .video__video {
+    	height: 330px;
+    }
+
     /* ABOUT MEDIA */
 
     .about__text {
@@ -5327,6 +5328,8 @@ main {
     .header__buttons {
         width: 53%;
     }
+
+   
 }
 
 @media (max-width: 1024px) {
@@ -5386,6 +5389,10 @@ main {
 
     .calculate-form__send-btn {
         width: 100%;
+    }
+
+     .video__video {
+    	height: 250px;
     }
 
     .header__buttons {
