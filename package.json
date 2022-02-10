@@ -28,7 +28,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
     "gulp-uglyfly": "^1.4.2",
-    "node-sass": "^4.14.1"
+    "node-sass": "^7.0.0"
   },
   "dependencies": {
     "imagemin-jpeg-recompress": "^6.0.0",
